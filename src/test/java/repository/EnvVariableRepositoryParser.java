@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Map;
 
 /**
- * The Variable set on environment always have priority above the environment properties
+ * The Variable set on env always have priority above the env properties
  */
 public class EnvVariableRepositoryParser extends RepositoryParser {
 

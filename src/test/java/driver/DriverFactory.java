@@ -2,6 +2,8 @@ package driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverFactory {
 
@@ -12,10 +14,12 @@ public class DriverFactory {
 	public static WebDriver getDriver(WebDriverType webDriverType) {
 
 		if(WebDriverType.CHROME == webDriverType) {
-			
-			//TODO: make the driver autoupdate
-			System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-			return new ChromeDriver();
+
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("disable-infobars");
+			options.addArguments("--disable-extensions");
+			WebDriverManager.chromedriver().setup();
+			return new ChromeDriver(options);
 		}
 
 		return null;
